@@ -61,9 +61,13 @@ namespace {
 
     (mlist++)->move = make<CASTLING>(kfrom, rfrom);
 
-    if (Checks && !pos.gives_check((mlist - 1)->move, CheckInfo(pos)))
-        --mlist;
-
+    if (Checks)
+    {
+       CheckInfo ci(pos);
+	   if(!pos.gives_check((mlist - 1)->move, ci))
+          --mlist;
+    }
+	
     return mlist;
   }
 

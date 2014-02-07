@@ -122,7 +122,7 @@ public:
   bool pseudo_legal(const Move m) const;
   bool capture(Move m) const;
   bool capture_or_promotion(Move m) const;
-  bool gives_check(Move m, const CheckInfo& ci) const;
+  bool gives_check(Move m, CheckInfo& ci) const;
   bool advanced_pawn_push(Move m) const;
   Piece moved_piece(Move m) const;
   PieceType captured_piece_type() const;
@@ -135,7 +135,7 @@ public:
 
   // Doing and undoing moves
   void do_move(Move m, StateInfo& st);
-  void do_move(Move m, StateInfo& st, const CheckInfo& ci, bool moveIsCheck);
+  void do_move(Move m, StateInfo& st, CheckInfo& ci, bool moveIsCheck);
   void undo_move(Move m);
   void do_null_move(StateInfo& st);
   void undo_null_move();

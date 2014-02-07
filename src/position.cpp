@@ -619,7 +619,7 @@ bool Position::pseudo_legal(const Move m) const {
 
 /// Position::gives_check() tests whether a pseudo-legal move gives a check
 
-bool Position::gives_check(Move m, const CheckInfo& ci) const {
+bool Position::gives_check(Move m, CheckInfo& ci) const {
 
   assert(is_ok(m));
   assert(ci.dcCandidates == discovered_check_candidates());
@@ -687,7 +687,7 @@ void Position::do_move(Move m, StateInfo& newSt) {
   do_move(m, newSt, ci, gives_check(m, ci));
 }
 
-void Position::do_move(Move m, StateInfo& newSt, const CheckInfo& ci, bool moveIsCheck) {
+void Position::do_move(Move m, StateInfo& newSt, CheckInfo& ci, bool moveIsCheck) {
 
   assert(is_ok(m));
   assert(&newSt != st);

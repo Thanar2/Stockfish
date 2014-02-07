@@ -161,7 +161,8 @@ const string move_to_san(Position& pos, Move m) {
           san += string("=") + PieceToChar[WHITE][promotion_type(m)];
   }
 
-  if (pos.gives_check(m, CheckInfo(pos)))
+  CheckInfo ci(pos);
+  if (pos.gives_check(m, ci))
   {
       StateInfo st;
       pos.do_move(m, st);
